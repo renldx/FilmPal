@@ -22,7 +22,7 @@ public class HomeController {
 
         var seenMovies = movieService.getAllMovies();
 
-        movieApi.GetMovies();
+        var newMovies = movieApi.GetMovies();
 
         return "Hello World";
     }

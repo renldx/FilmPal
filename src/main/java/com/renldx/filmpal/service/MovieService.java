@@ -19,7 +19,7 @@ public class MovieService {
         return movieRepository.findAll();
     }
 
-    public Optional<Movie> getUserById(int id) {
+    public Optional<Movie> getMovieById(int id) {
         return movieRepository.findById(id);
     }
 

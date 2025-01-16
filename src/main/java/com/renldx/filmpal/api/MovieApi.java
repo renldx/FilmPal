@@ -25,14 +25,14 @@ public class MovieApi {
                 .build();
     }
 
-    public void GetMovies() throws JsonProcessingException {
+    public MovieApiResponse GetMovies() throws JsonProcessingException {
         var chatRequest = ChatRequest.builder()
                 .model("gpt-4o-mini")
                 .message(ChatMessage.SystemMessage.of("You are a movie enthusiast."))
                 .message(ChatMessage.UserMessage.of("List the latest top 5 horror movies."))
                 .responseFormat(ResponseFormat.jsonSchema(ResponseFormat.JsonSchema.builder()
                         .name("MovieResponseFormat")
-                        .schemaClass(MovieApiResponseFormat.class)
+                        .schemaClass(MovieApiResponseSchema.class)
                         .build()))
                 .build();
 
@@ -40,10 +40,10 @@ public class MovieApi {
         var chatResponse = futureChat.join();
         var jsonResponse = chatResponse.firstContent();
 
-        MovieApiResponse movieApiResponse = objectMapper.readValue(jsonResponse, MovieApiResponse.class);
+        return objectMapper.readValue(jsonResponse, MovieApiResponse.class);
     }
 
-    public static class MovieApiResponseFormat {
+    public static class MovieApiResponseSchema {
         public List<MovieResponse> movies;
 
         public static class MovieResponse {
