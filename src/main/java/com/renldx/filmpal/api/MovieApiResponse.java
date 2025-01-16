@@ -3,13 +3,13 @@ package com.renldx.filmpal.api;
 import java.util.Date;
 import java.util.List;
 
-public class MoviesResponse {
+public class MovieApiResponse {
     private List<MovieResponse> movies;
 
-    public MoviesResponse() {
+    public MovieApiResponse() {
     }
 
-    public MoviesResponse(List<MovieResponse> movieResponseList) {
+    public MovieApiResponse(List<MovieResponse> movieResponseList) {
         this.movies = movieResponseList;
     }
 

@@ -12,12 +12,12 @@ import java.util.Date;
 import java.util.List;
 
 @Service
-public class MovieService {
+public class MovieApi {
 
     private final ObjectMapper objectMapper;
     private final SimpleOpenAI openAI;
 
-    public MovieService(ObjectMapper objectMapper) {
+    public MovieApi(ObjectMapper objectMapper) {
         this.objectMapper = objectMapper;
 
         this.openAI = SimpleOpenAI.builder()
@@ -28,11 +28,11 @@ public class MovieService {
     public void GetMovies() throws JsonProcessingException {
         var chatRequest = ChatRequest.builder()
                 .model("gpt-4o-mini")
-                .message(ChatMessage.SystemMessage.of("You are an movie enthusiast."))
+                .message(ChatMessage.SystemMessage.of("You are a movie enthusiast."))
                 .message(ChatMessage.UserMessage.of("List the latest top 5 horror movies."))
                 .responseFormat(ResponseFormat.jsonSchema(ResponseFormat.JsonSchema.builder()
                         .name("MovieResponseFormat")
-                        .schemaClass(MovieResponseFormat.class)
+                        .schemaClass(MovieApiResponseFormat.class)
                         .build()))
                 .build();
 
@@ -40,10 +40,10 @@ public class MovieService {
         var chatResponse = futureChat.join();
         var jsonResponse = chatResponse.firstContent();
 
-        MoviesResponse moviesResponse = objectMapper.readValue(jsonResponse, MoviesResponse.class);
+        MovieApiResponse movieApiResponse = objectMapper.readValue(jsonResponse, MovieApiResponse.class);
     }
 
-    public static class MovieResponseFormat {
+    public static class MovieApiResponseFormat {
         public List<MovieResponse> movies;
 
         public static class MovieResponse {
