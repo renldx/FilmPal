@@ -1,4 +1,4 @@
-package com.renldx.filmpal.web.viewmodel.viewmodel;
+package com.renldx.filmpal.web.viewmodel;
 
 import java.util.List;
 

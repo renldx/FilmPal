@@ -1,10 +1,10 @@
-package com.renldx.filmpal.web.controller.controller;
+package com.renldx.filmpal.web.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.renldx.filmpal.api.MovieApi;
 import com.renldx.filmpal.entity.Genres;
 import com.renldx.filmpal.service.MovieService;
-import com.renldx.filmpal.web.viewmodel.viewmodel.MoviesViewModel;
+import com.renldx.filmpal.web.viewmodel.MoviesViewModel;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
