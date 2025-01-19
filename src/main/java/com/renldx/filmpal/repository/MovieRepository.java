@@ -1,6 +1,6 @@
 package com.renldx.filmpal.repository;
 
-import com.renldx.filmpal.model.Movie;
+import com.renldx.filmpal.entity.Movie;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

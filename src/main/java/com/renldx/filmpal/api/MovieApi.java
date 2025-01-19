@@ -2,13 +2,13 @@ package com.renldx.filmpal.api;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.renldx.filmpal.entity.Genres;
 import io.github.sashirestela.openai.SimpleOpenAI;
 import io.github.sashirestela.openai.common.ResponseFormat;
 import io.github.sashirestela.openai.domain.chat.ChatMessage;
 import io.github.sashirestela.openai.domain.chat.ChatRequest;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -25,11 +25,11 @@ public class MovieApi {
                 .build();
     }
 
-    public MovieApiResponse GetMovies() throws JsonProcessingException {
+    public MovieApiResponse GetMovies(Genres genre) throws JsonProcessingException {
         var chatRequest = ChatRequest.builder()
                 .model("gpt-4o-mini")
                 .message(ChatMessage.SystemMessage.of("You are a movie enthusiast."))
-                .message(ChatMessage.UserMessage.of("List the latest top 5 horror movies."))
+                .message(ChatMessage.UserMessage.of(String.format("List the latest top 5 %s movies.", genre)))
                 .responseFormat(ResponseFormat.jsonSchema(ResponseFormat.JsonSchema.builder()
                         .name("MovieResponseFormat")
                         .schemaClass(MovieApiResponseSchema.class)
@@ -48,7 +48,7 @@ public class MovieApi {
 
         public static class MovieResponse {
             public String title;
-            public Date release;
+            public String release;
         }
     }
 }

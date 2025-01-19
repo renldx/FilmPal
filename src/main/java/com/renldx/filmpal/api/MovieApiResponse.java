@@ -1,6 +1,5 @@
 package com.renldx.filmpal.api;
 
-import java.util.Date;
 import java.util.List;
 
 public class MovieApiResponse {
@@ -23,12 +22,12 @@ public class MovieApiResponse {
 
     public static class MovieResponse {
         private String title;
-        private Date release;
+        private String release;
 
         public MovieResponse() {
         }
 
-        public MovieResponse(String title, Date release) {
+        public MovieResponse(String title, String release) {
             this.title = title;
             this.release = release;
         }
@@ -41,11 +40,11 @@ public class MovieApiResponse {
             this.title = title;
         }
 
-        public Date getRelease() {
+        public String getRelease() {
             return release;
         }
 
-        public void setRelease(Date release) {
+        public void setRelease(String release) {
             this.release = release;
         }
     }

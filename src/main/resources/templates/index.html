@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Home Page</title>
+</head>
+<body>
+<h1>New Movies</h1>
+<ul th:each="movie: ${vm.getMovieViewModelList()}">
+    <li th:text="${movie.getTitle() + ' - ' + movie.getYear()}"/>
+</ul>
+</body>
+</html>

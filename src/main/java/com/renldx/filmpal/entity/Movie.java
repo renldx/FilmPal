@@ -1,4 +1,4 @@
-package com.renldx.filmpal.model;
+package com.renldx.filmpal.entity;
 
 import jakarta.persistence.*;
 

@@ -1,6 +1,6 @@
 package com.renldx.filmpal.service;
 
-import com.renldx.filmpal.model.Movie;
+import com.renldx.filmpal.entity.Movie;
 import com.renldx.filmpal.repository.MovieRepository;
 import org.springframework.stereotype.Service;
 
